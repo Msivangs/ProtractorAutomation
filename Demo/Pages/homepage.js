@@ -28,4 +28,3 @@ let homepage = function () {
 };
 
 module.exports = new homepage();
-
