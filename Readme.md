@@ -1,3 +1,30 @@
+Prerequisites:
+"https://www.protractortest.org/#/tutorial"
+
+Protractor is a Node.js program. To run, you will need to have Node.js installed. You will download Protractor package using npm, which comes with Node.js. Check the version of Node.js you have by running node --version. Then, check the compatibility notes in the Protractor README to make sure your version of Node.js is compatible with Protractor.
+
+By default, Protractor uses the Jasmine test framework for its testing interface. This tutorial assumes some familiarity with Jasmine, and we will use version 2.4.
+
+This tutorial will set up a test using a local standalone Selenium Server to control browsers. You will need to have the Java Development Kit (JDK) installed to run the standalone Selenium Server. Check this by running java -version from the command line.
+
+Setup:
+
+Use npm to install Protractor globally with:
+
+npm install -g protractor
+
+This will install two command line tools, protractor and webdriver-manager. Try running protractor --version to make sure it's working.
+
+The webdriver-manager is a helper tool to easily get an instance of a Selenium Server running. Use it to download the necessary binaries with:
+
+webdriver-manager update
+Now start up a server with:
+
+webdriver-manager start
+
+This will start up a Selenium Server and will output a bunch of info logs. Your Protractor test will send requests to this server to control a local browser. Leave this server running throughout the tutorial. You can see information about the status of the server at http://localhost:4444/wd/hub.
+
+
 NPM and NodeJS installation:
 
 https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
@@ -5,7 +32,7 @@ https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 https://nodejs.org/en/download/
 
 
-Protractor Locators
+Protractor Locators:
 
 There are two kinds of locators present in Protractor
 •	Angular Specific Locators
@@ -13,27 +40,34 @@ There are two kinds of locators present in Protractor
 Global Functions for Protractor:
 •	element - finds a single element
 •	element.all - finds multiple elements
+
 1. model: ng-model attribute is an angular locator. It locates the element by model attribute value given.
 //HTML code
 <span ng-model="person.name"></span>
+
 //usage of locator 
 element(by.model('person.name'));
+
 2. binding: ng-bind is also an angular locator. Binding locator is used to locate the element using bind attribute value given.
 Find an element by text binding. Does a partial match, so any elements bound to variables containing the input string will be returned.
 //HTML Code
 <span ng-bind="person.email.id"></span>
+
 //usage of locator
 element(by.binding('person.email'));
+
 3. exactBinding: ng-bind It is also used for locating element using ng-bind locator, but with exact string/value
 //HTML code
 <span ng-bind="person.email.id"></span> //this is not be found as it is not exact value
 <span ng-bind="person.emai"></span> //this element will be found as it is exact match
+
 //usage of locator 
 element(by.exactbinding('person.email'));
 
 4. buttonText: It is used to locate an element using the text on button tag.
 //Html code
 <button>Save</button>
+
 //Usage of locator
 element(by.buttonText('save'));
 
@@ -41,12 +75,14 @@ element(by.buttonText('save'));
 <button>
 <label>Save As</label> //matches
 </button>
+
 //Usage of locator
 element(by.buttonText('Save As'));
 
 5. partialButtonText: It can locate the element using the partial text present in the button.
 //Html code
 <button>Save As Text</button>
+
 //usage of locator
 element(by.buttonText('Save'));
 
@@ -54,6 +90,7 @@ element(by.buttonText('Save'));
 <button> 
 <label>Save As File</label>
 </button>
+
 //usage of locator
 element(by.buttonText('Save As'));
 
@@ -64,6 +101,7 @@ element(by.buttonText('Save As'));
        <td>{{prod.name}}</td>
        <td>{{prod.quantity}}</td>
 </tr>
+
 //Usage of locator
   let eleID = element(by.repeater('product info').row(0));
   let eleName = element(by.repeater('product info').row(1));
@@ -71,6 +109,7 @@ element(by.buttonText('Save As'));
 7. exactRepeater: It locates element with ng-repeat attribute with exact string present in it.
 //Html code
 <li ng-repeat="emp in employee_names"></li>
+
 //usage of locator
 element(by.exactRepeater('emp in employee_names'));
 
@@ -80,6 +119,7 @@ element(by.exactRepeater('emp in employee_names'));
 <li class="name">Mike</li>
    <li class="name">Linda</li>
 </ul>
+
 //usage of locator
 element(by.cssContainingText('.name', 'Mike'));
 
@@ -107,7 +147,8 @@ element(by.partialLinkText("Selenium"));
 element(by.css("#firstButton"));
 element(by.xpath("//button[@name="Ban"]"));
 
-Jasmine
+Jasmine:
+
 •	Jasmine is a unit testing framework to test java script code
 •	Jasmine is a behavior-driven development framework for testing JavaScript code.
 •	Why Unit testing Framework(i.e Jasmine Framework)?
@@ -117,7 +158,9 @@ Jasmine
 3.	Jasmine framework is very clean and understandable.
 4.	Jasmine is an open-source framework.
 5.	Can manage/control test scripts.
+
 Jasmine Test Building Blocks:
+
 •	Describe Block – Test Suite
 •	IT Block – Test
 •	beforeEach – Executes multiple times before executing every IT block.
@@ -130,6 +173,7 @@ Jasmine Test Building Blocks:
 •	Xit Block – Disable it block
 
 Create an expectation for a spec. For this we use machers. 
+
 •	toBe() 
 •	toEqual() 
 •	toBeNull() 
