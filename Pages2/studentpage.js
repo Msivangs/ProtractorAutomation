@@ -30,7 +30,7 @@ let studentpage = function () {
         btnsubmit.click();
     }
 
-    this.verifyResult = function (name, contact, subject, marks) {
+    this.verifyResult = function (name, contact, sub, marks) {
 
         let rows = element.all(by.tagName('tr'));
 
