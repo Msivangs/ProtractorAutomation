@@ -4,6 +4,8 @@ describe("mysuite", function() {
     
     it("addrecord", function() {
 
+        browser.ignoreSynchronization=true;
+
         studentpage.get("http://www.trycatchclasses.com/code/demo/angular4_curd/");
 
         studentpage.setName("John");
