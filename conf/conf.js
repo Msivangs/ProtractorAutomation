@@ -1,4 +1,5 @@
 // An example configuration file
+
 exports.config = {
   directConnect: true,
 
@@ -14,7 +15,7 @@ exports.config = {
   // Spec patterns are relative to the configuration file location passed
   // to protractor (in this example conf.js).
   // They may include glob patterns.
-  specs: ['..//testcases//pomtest.js'],
+  specs: ['..//testcases//tableTest.js'],
 
   // Options to be passed to Jasmine-node.
   jasmineNodeOpts: {
